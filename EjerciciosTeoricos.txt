@@ -1,0 +1,100 @@
+12.8. Grafos
+
+Ejercicio 122. Defina los términos: grafo, grafo dirigido (o digrafo), cuándo un vértice es adyacente a otro, peso (o coste) de un grafo, camino, longitud
+de un camino, bucle en un grafo, ciclo, camino simple, grafo acíclico (o DAG), grafo conexo, grafo fuertemente conexo, grafo débilmente conexo y grafo completo.
+
+Grafo: estructura formada por un conjunto de vértices y otro conjunto de aristas.
+
+Grafo dirigido: grafo cuyas aristas inducen un orden.
+
+Adyacencia entre vértices: implica la conexión entre dos vértices por una arista.
+
+Peso de un grafo: son los valores asignados a cada arista del grafo.
+
+Camino: secuencia intercalada de vértices y aristas.
+
+Longitud de un camino: cantidad de aristas que hay en el camino desde el primer vértice hasta el último.
+
+Bucle en un grafo: en un vértice, una arista que lleva al mismo vértice.
+
+Ciclo: camino de más de una arista que termina en el mismo vértice que en el que inició.
+
+Camino simple: camino en el que no hay repetición de vértices.
+
+Grafo acíclico: grafo en el que no se produce ningún ciclo.
+
+Grafo conexo: grafo en el que todos los vértices están conectados, sin necesidad de estar conectados todos entre sí.
+
+Grafo fuertemente conexo: grafo en el que todos los vértices son mutuamente alcanzables.
+
+Grafo débilmente conexo: grafo en el que si ignoras la dirección de las aristas, es conexo.
+
+Grafo completo: grafo en el que todos los vértices están conectados directamente.
+
+
+Ejercicio 123. Explique diferentes implementaciones que se pueden utilizar
+para la estructura de grafo.
+
+Un grafo puede implementarse, principalmente, de tres maneras:
+
+- Matriz de adyacencia: matriz ixj que representa las conexiones entre los vértices, escribiéndose 1 si los vértices i y j están conectados y 0 en caso de que no. Si fuera un grafo ponderado, escribiríamos la ponderación.
+- Matriz de incidencia: matriz ix3 que representa el destino de un vértice i a otro, además del peso y el origen.
+- Lista de adyacencia: es una lista que almacena, para cada vértice, los vértices a los que está conectado directamente.
+
+Ejercicio 124. Sea el grafo de la figura 2. Se pide:
+
+1. Realizar la traza de la búsqueda en profundidad de una ruta que vaya de A a I. Muestre cómo van evolucionando la pila, la tabla con la solución provisional y el árbol. ¿Cuándo se realiza vuelta atrás (back-tracking)?
+
+Si empezamos por B, la pila queda así: I, H, B, A. No hace falta backtracking.
+Si empezamos por C, la pila puede quedar así: D, G, E, C, A --> Backtracking a C --> D, G, F, C, A --> Backtracking a A --> I, H, B, A
+
+2. Realizar la traza la búsqueda en amplitud de una ruta que vaya de A a I. Muestre cómo van evolucionando la cola, la tabla con la solución provisional y el árbol.
+
+A, C, B, E, F, H, G, I
+
+3. ¿Qué estructuras de las mencionadas en los apartados 1 y 2 se implementan realmente y cuál es puramente conceptual en este ejercicio?
+
+Se implanta una lista de adyacencia únicamente, ya que estamos buscando, no comprobando conexiones.
+
+Ejercicio 125. Sea un grafo con los siguientes vértices: "Albacete", "Almería", "Madrid", "Murcia", "Segovia" y "Toledo", y con los siguientes arcos:
+
+Madrid-Segovia: 92 km
+
+Segovia-Toledo: 165 km
+
+Madrid-Toledo: 72 km
+
+Madrid-Albacete: 257 km
+
+Albacete-Toledo: 245 km
+
+Albacete-Murcia: 146 km
+
+Murcia-Almería: 218 km
+
+Toledo-Almería: 500 km
+
+
+Se pide ejecutar en papel el algoritmo de Dijkstra para obtener el mejor camino desde Madrid a cualquiera de las demás ciudades.
+
+M - M: 0
+M - S: 92
+M - AB: 257
+M - T: 72
+M - MU --> M -> AB -> MU: 403
+M - A --> M -> T -> A: 572
+
+
+Ejercicio 126. Analice la complejidad temporal asintótica de los siguientes algoritmos:
+
+1. Cálculo del camino entre dos vértices mediante búsqueda en profundidad.
+
+O(n^2)
+
+2. Cálculo del camino entre dos vértices mediante búsqueda en anchura.
+
+O(n^2)
+
+3. Algoritmo de Dijkstra.
+
+O(n^2)
